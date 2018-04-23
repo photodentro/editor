@@ -3,10 +3,42 @@
 <head>
   <meta charset="utf-8">
   <title>Κειμενογράφος</title>
+<style>
+/* https://stackoverflow.com/questions/19861838/tinymce-4-and-100-height-within-containing-element */
+html, body {
+    height: 100%;
+}
+/*Container, container body, iframe*/
+.mce-tinymce, .mce-container-body, #code_ifr {
+    min-height: 100% !important;
+}
+/*Container body*/
+.mce-container-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/*Editing area*/
+.mce-container-body .mce-edit-area {
+    position: absolute;
+    top: 69px;
+    bottom: 37px;
+    left: 0;
+    right: 0;
+}
+/*Footer*/
+.mce-tinymce .mce-statusbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+</style>
   <script src="js/tinymce/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea', language:'el' });</script>
 </head>
-<body>
-  <textarea></textarea>
+<body class="mce-container-body">
+<textarea class="mce-edit-area" id="content_ifr"></textarea>
 </body>
 </html>
