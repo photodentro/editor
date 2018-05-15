@@ -36,9 +36,26 @@ html, body {
 }
 </style>
   <script src="js/tinymce/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea', language:'el' });</script>
+  <script>
+tinymce.init({
+  selector: '#myeditor', language:'el', branding: false,
+  plugins: ['charmap', 'emoticons', 'fullscreen', 'image', 'print', 'template', 'textcolor'],
+  toolbar: 'newdocument print | undo redo | copy paste | fontselect fontsizeselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | image emoticons |  charmap template fullscreen',
+  templates: [
+    {title: 'Some title 1', description: 'Some desc 1', content: 'My content'},
+    {title: 'Some title 2', description: 'Some desc 2', url: 'development.html'}
+  ],
+  setup: function(editor) {
+      editor.on('init', function(e) {
+        editor.execCommand('mceFullScreen');
+      });
+    }
+});
+
+//tinymce.init({ selector:'#myeditor', language:'el', branding: false, });
+  </script>
 </head>
 <body class="mce-container-body">
-<textarea class="mce-edit-area" id="content_ifr"></textarea>
+<textarea class="mce-edit-area" id="myeditor"></textarea>
 </body>
 </html>
