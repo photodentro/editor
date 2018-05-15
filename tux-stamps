@@ -1,0 +1,22 @@
+#!/bin/sh
+# Convert tuxpaint stamps into tinymce image_list JSON format.
+# apt source tuxpaint-stamps and then run this.
+
+echo '['
+while read -r txt; do
+    # Trick to avoid echoing the last comma
+    test -n "$line" && echo "$line,"
+    translation=$(sed -n 's/el.utf8=//p' "$txt")
+    translation=${translation%.}
+    png=${txt%.txt}
+    png="$png.png"
+    if [ -f "$png" ]; then
+        line="  { \"title\": \"$translation\", \"value\": \"$png\" }"
+    else
+        echo "$png not found" >&2
+    fi
+done <<EOF
+$(find stamps/ -name '*.txt')
+EOF
+echo "$line"
+echo ']'
