@@ -40,6 +40,7 @@ html, body {
 tinymce.init({
   selector: '#myeditor', language:'el', branding: false,
   plugins: ['charmap', 'emoticons', 'fullscreen', 'image', 'print', 'template', 'textcolor'],
+  // https://www.tinymce.com/docs/advanced/editor-control-identifiers/#toolbarcontrols
   toolbar: 'newdocument print | undo redo | copy paste | fontselect fontsizeselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | image emoticons |  charmap template fullscreen',
   templates: [
     {title: 'Some title 1', description: 'Some desc 1', content: 'My content'},
@@ -52,7 +53,8 @@ tinymce.init({
     },
   image_prepend_url: "https://ermis.dschool.edu.gr/preschool/tuxpaint-stamps-2014.08.23/stamps/",
   image_advtab: true,
-  image_list: "image_list.json"
+  image_list: "image_list.json",
+  removed_menuitems: "superscript,subscript,code"
 });
 
 //tinymce.init({ selector:'#myeditor', language:'el', branding: false, });
