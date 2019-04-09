@@ -110,7 +110,7 @@ tinymce.init({
   selector: '#myeditor', language:'el', branding: false,
   plugins: ['charmap', 'emoticons', 'fullscreen', 'image', 'print', 'template', 'textcolor'],
   // https://www.tinymce.com/docs/advanced/editor-control-identifiers/#toolbarcontrols
-  toolbar: 'newdocument print | fontselect fontsizeselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | undo redo | image emoticons  charmap template | copy paste | fullscreen',
+  toolbar: 'newdocument print | fontselect fontsizeselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | undo redo | image emoticons  charmap template | copy paste | help ',
   toolbar_items_size: 'large',
   templates: [
     {title: 'Some title 1', description: 'Some desc 1', content: 'My content'},
@@ -119,6 +119,9 @@ tinymce.init({
   setup: function(editor) {
       editor.on('init', function(e) {
         // editor.execCommand('mceFullScreen');
+        document.getElementById('mceu_21').onclick = function () {
+          window.open("credits/index_DS_II.html");
+        };
       });
     },
   image_prepend_url: "images/",
